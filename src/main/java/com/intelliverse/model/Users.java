@@ -1,6 +1,7 @@
 package com.intelliverse.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -12,7 +13,7 @@ public class Users implements Serializable {
 
 	public Users() {
 	}
-	
+
 	@Id
 	private String id;
 	private String firstName;
@@ -20,6 +21,8 @@ public class Users implements Serializable {
 	private String phoneNumber;
 	private String email;
 	private String password;
+	private String resetPasswordToken;
+	private Date resetPasswordExpires;
 	private String company;
 	private String country;
 	private String state;
@@ -105,11 +108,28 @@ public class Users implements Serializable {
 		this.city = city;
 	}
 
+	public String getResetPasswordToken() {
+		return resetPasswordToken;
+	}
+
+	public void setResetPasswordToken(String resetPasswordToken) {
+		this.resetPasswordToken = resetPasswordToken;
+	}
+
+	public Date getResetPasswordExpires() {
+		return resetPasswordExpires;
+	}
+
+	public void setResetPasswordExpires(Date resetPasswordExpires) {
+		this.resetPasswordExpires = resetPasswordExpires;
+	}
+
 	@Override
 	public String toString() {
 		return "Users [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", phoneNumber="
-				+ phoneNumber + ", email=" + email + ", password=" + password + ", company=" + company + ", country="
-				+ country + ", state=" + state + ", city=" + city + "]";
+				+ phoneNumber + ", email=" + email + ", password=" + password + ", resetPasswordToken="
+				+ resetPasswordToken + ", resetPasswordExpires=" + resetPasswordExpires + ", company=" + company
+				+ ", country=" + country + ", state=" + state + ", city=" + city + "]";
 	}
 
 	@Override
