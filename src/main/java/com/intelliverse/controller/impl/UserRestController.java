@@ -96,14 +96,12 @@ public class UserRestController implements IUserRestController {
 	}
 
 	private void sendResetPasswordLink(String email, String text) throws MessagingException, IOException {
-
 		MimeMessage message = mailSender.createMimeMessage();
-
 		MimeMessageHelper helper = new MimeMessageHelper(message, true);
 		helper.setTo(email);
 		helper.setText(text, true);
 		helper.setSubject("Password reset request");
-
+		helper.setFrom("swadeeps@yahoo.com");
 		mailSender.send(message);
 	}
 
